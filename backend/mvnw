@@ -1,0 +1,15 @@
+#!/bin/sh
+# ----------------------------------------------------------------------------
+# Apache Maven Wrapper startup script for Unix / Linux
+# ----------------------------------------------------------------------------
+
+BASE_DIR=$(pwd)
+if [ -f "$BASE_DIR/.mvn/wrapper/maven-wrapper.jar" ]; then
+    java -jar "$BASE_DIR/.mvn/wrapper/maven-wrapper.jar" "$@"
+elif command -v mvn >/dev/null 2>&1; then
+    mvn "$@"
+else
+    echo "Maven or Maven wrapper jar not found."
+    exit 1
+fi
+

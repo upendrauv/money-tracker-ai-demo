@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: money-tracker-backend
+    env: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    plan: free
+    region: oregon
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: DB_URL
+        sync: false # Set in Render dashboard (e.g. jdbc:mysql://<host>:<port>/defaultdb?sslMode=REQUIRED)
+      - key: DB_USERNAME
+        sync: false # Set in Render dashboard (e.g. avnadmin)
+      - key: DB_PASSWORD
+        sync: false # Set in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true # Generates secure random key automatically
+      - key: ALLOWED_ORIGINS
+        value: http://localhost:5173,https://*.vercel.app
+
